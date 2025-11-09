@@ -1,0 +1,57 @@
+{
+    "layer": "bottom",
+        "position": "top",
+        "height": 18,
+        "spacing": 5,
+        "modules-left": ["hyprland/workspaces"],
+        "modules-center": ["clock"],
+        "modules-right": ["backlight", "pulseaudio","battery"],
+
+        "hyprland/workspaces": {
+            "format": "{icon}",
+            "format-icons": {
+                "active": "\uf444",
+                "default": "\uf4c3",
+            },
+            "persistent-workspaces": {
+                "*": 5,
+            },
+        },
+
+        "backlight": {
+            "device": "nvidia_wmi_ec_backlight",
+            "format": "{icon} {percent}%",
+            "format-icons": [""],
+            "tooltip": false,
+        },
+
+        "battery": {
+            "bat": "BAT1",
+            "states": {
+                "good": 95,
+                "warning": 30,
+                "critical": 5
+            },
+            "format-icons": {
+                "default": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+            },
+            "format": "{icon} {capacity}%",
+            "tooltip": false,
+        },
+
+        "clock": {
+            "format": "{:%H:%M}",
+            "tooltip": true,
+            "tooltip-format": "{:%d-%m-%Y}",
+        },
+
+        "pulseaudio": {
+            "format": "{icon} {volume}%",
+            "format-icons": {
+                "default": ["\uf027", "\uf028"]
+            },
+            "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+            "format-muted": "\ueee8 {volume}%",
+            "tooltip": false,
+        },
+}

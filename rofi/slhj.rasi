@@ -1,0 +1,103 @@
+* {
+    highlight: bold;
+
+    transparent:            #00000000;
+    slhj-dark-bg0-hard:     #16161daa;
+    slhj-dark-fg0:          #fffefe;
+    slhj-dark-fg1:          #89b4fa;
+    slhj-dark-red-dark:     #92140c;
+    slhj-dark-red-light:    #ff5d73;
+    slhj-dark-yellow-dark:  #eec643;
+    slhj-dark-yellow-light: #ffe873;
+    slhj-border:            @slhj-dark-fg1;
+    slhj-entry:             #757575;
+
+    background:                  @transparent;
+    background-color:            @transparent;
+    foreground:                  @slhj-dark-fg1;
+    border-color:                @slhj-border;
+    separatorcolor:              @border-color;
+
+    normal-background:           @background;
+    normal-foreground:           @foreground;
+    alternate-normal-background: @background;
+    alternate-normal-foreground: @foreground;
+    selected-normal-background:  @background;
+    selected-normal-foreground:  @slhj-dark-fg0;
+
+    active-background:           @slhj-dark-yellow-dark;
+    active-foreground:           @foreground;
+    alternate-active-background: @active-background;
+    alternate-active-foreground: @active-foreground;
+    selected-active-background:  @slhj-dark-yellow-light;
+    selected-active-foreground:  @active-foreground;
+
+    urgent-background:           @slhj-dark-red-dark;
+    urgent-foreground:           @foreground;
+    alternate-urgent-background: @urgent-background;
+    alternate-urgent-foreground: @urgent-foreground;
+    selected-urgent-background:  @slhj-dark-red-light;
+    selected-urgent-foreground:  @urgent-foreground;
+}
+
+entry {
+    placeholder: "Search";
+    placeholder-color: @slhj-entry;
+    hide-cursor-on-empty: true;
+}
+
+element-text {
+    margin: 0px;
+    padding: 0px 7px 0px 5px;
+    vertical-align: 0.5;
+}
+
+element-text selected {
+    margin: 0px;
+    border: 0px;
+    padding: 0px;
+    border-radius: 4px;
+    background-color: #89b4fa45;
+}
+
+listview {
+    margin: 0px 30px 1em 32px;
+    border: 0px;
+    padding: 0px;
+    dynamic: true;
+    fixed-height: false;
+    require-input: true;
+    spacing: 0px;
+}
+
+inputbar {
+    margin: 0px;
+    border: 0px;
+    padding: 12px 12px;
+    children: [prompt, entry];
+}
+
+prompt {
+    padding: 0px 14px 0px 2px;
+}
+
+window {
+    margin: 0px;
+    border: 0px;
+    padding: 4px;
+
+    border-radius: 23px;
+    children: [mainbox];
+    background-color: @slhj-dark-bg0-hard;
+}
+
+mainbox {
+    spacing: 0;
+    children: [ inputbar, listview ];
+}
+
+scrollbar {
+    background-color: @transparent;
+    handle-color: @transparent;
+    handle-rounded-corners: true;
+}
