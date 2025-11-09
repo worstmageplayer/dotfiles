@@ -7,8 +7,8 @@ return {
     opts = {
         workspaces = {
             {
-                name = "uni_notes",
-                path = "/mnt/c/Users/shawn/Personal/uni_notes",
+                name = "obsidian",
+                path = "~/obsidian",
             },
         },
     },
