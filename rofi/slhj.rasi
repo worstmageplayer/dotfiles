@@ -82,7 +82,7 @@ prompt {
 }
 
 window {
-    margin: 0px;
+    margin: 0px 50px;
     border: 0px;
     padding: 4px;
 
