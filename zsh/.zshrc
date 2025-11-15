@@ -1,21 +1,19 @@
-# Created by newuser for 5.9
 autoload -U colors && colors
-LAST_PROMPT_DIR=""
-PROMPT="%{$fg[red]%}  %{$reset_color%}"
+
+typeset -A color
+color[dir]="%{%F{111}%}"
+color[icon]="%{%F{8}%}"
+
+typeset -g LAST_PROMPT_DIR=""
 
 function prompt_precmd() {
-    local currentDir=$PWD
-    if [[ "$currentDir" != "$LAST_PROMPT_DIR" ]]; then
-        LAST_PROMPT_DIR=$currentDir
-
-        local dirColor="%{%F{111}%}"   # Directory color
-        local lineColor="%{%F{8}%}"    # Line color
-        local reset="%{%f%}"           # Reset color
-
-        print -P "${lineColor}  ${dirColor}%B$currentDir%B${reset}"
+    if [[ "$PWD" != "$LAST_PROMPT_DIR" ]]; then
+        LAST_PROMPT_DIR=$PWD
+        local dir_prompt="${color[icon]}  ${color[dir]}%B${PWD}"
+        print -P "$dir_prompt"
     fi
 }
 
-precmd() {
-    prompt_precmd
-}
+precmd_functions+=(prompt_precmd)
+
+PROMPT="%{$fg[red]%}  %{$reset_color%}"
