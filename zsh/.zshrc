@@ -1,3 +1,4 @@
+export LC_ALL=en_US.UTF-8
 autoload -U colors && colors
 
 typeset -A color
@@ -10,13 +11,13 @@ typeset -g PROMPT_DIR_LINE=""
 function prompt_precmd() {
     if [[ "$PWD" != "$LAST_PROMPT_DIR" ]]; then
         LAST_PROMPT_DIR=$PWD
-        PROMPT_DIR_LINE="${color[icon]}  ${color[dir]}%B${PWD}%b
+        PROMPT_DIR_LINE="${color[icon]}%{%G%} ${color[dir]}%B${PWD}%b%{%f%}
 "
     else
         PROMPT_DIR_LINE=""
     fi
 
-    # MULTILINE prompt, safe handling by zsh
-    PROMPT="${PROMPT_DIR_LINE}%{$fg[red]%}  %{$reset_color%}"
+    PROMPT="${PROMPT_DIR_LINE}%{$fg[red]%} %{%G%} %{$reset_color%}"
 }
+
 precmd_functions+=(prompt_precmd)
