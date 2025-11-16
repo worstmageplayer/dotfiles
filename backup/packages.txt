@@ -3,6 +3,11 @@ base
 base-devel
 brightnessctl
 btop
+cachyos-kernel-manager
+cachyos-keyring
+cachyos-mirrorlist
+cachyos-v3-mirrorlist
+cachyos-v4-mirrorlist
 dkms
 docker
 efibootmgr
@@ -27,6 +32,8 @@ libpulse
 libva-intel-driver
 libva-nvidia-driver
 linux
+linux-cachyos-bore-lto
+linux-cachyos-bore-lto-headers
 linux-firmware
 linux-headers
 ly
@@ -48,6 +55,7 @@ qt6-wayland
 ripgrep
 rofi
 rust
+sbctl
 slurp
 smartmontools
 sof-firmware
@@ -63,6 +71,8 @@ wireplumber
 wl-clipboard
 xdg-desktop-portal-hyprland
 xdg-utils
+yay
+zen-browser-bin
 zig
 zram-generator
 zsh
