@@ -17,7 +17,6 @@ firefox
 gamescope
 git
 grim
-gst-plugin-pipewire
 hypridle
 hyprland
 hyprlock
@@ -32,8 +31,8 @@ libpulse
 libva-intel-driver
 libva-nvidia-driver
 linux
-linux-cachyos-bore-lto
-linux-cachyos-bore-lto-headers
+linux-cachyos
+linux-cachyos-headers
 linux-firmware
 linux-headers
 ly
