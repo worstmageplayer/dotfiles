@@ -9,7 +9,6 @@ cachyos-mirrorlist
 cachyos-v3-mirrorlist
 cachyos-v4-mirrorlist
 dkms
-docker
 efibootmgr
 exfat-utils
 feh
@@ -28,6 +27,8 @@ iwd
 jq
 kitty
 libpulse
+libreoffice-still
+librewolf-bin
 libva-intel-driver
 libva-nvidia-driver
 linux
@@ -43,7 +44,6 @@ noto-fonts
 noto-fonts-cjk
 noto-fonts-extra
 nvidia-dkms
-nvidia-settings
 openssh
 pipewire
 pipewire-alsa
@@ -59,6 +59,7 @@ slurp
 smartmontools
 sof-firmware
 steam
+thunderbird
 tree
 ttf-jetbrains-mono-nerd
 vim
