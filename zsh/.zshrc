@@ -21,3 +21,8 @@ function prompt_precmd() {
 }
 
 precmd_functions+=(prompt_precmd)
+
+command_not_found_handler() {
+  command="$1"
+  echo "Command '$command' not found!" | cowsay -f actually
+}
