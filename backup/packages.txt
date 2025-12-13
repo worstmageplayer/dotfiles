@@ -27,6 +27,7 @@ intel-ucode
 iwd
 jq
 kitty
+libheif
 libpulse
 libreoffice-still
 librewolf-bin
@@ -46,6 +47,7 @@ noto-fonts-cjk
 noto-fonts-extra
 nvidia-dkms
 openssh
+perl-image-exiftool
 pipewire
 pipewire-alsa
 pipewire-jack
@@ -54,11 +56,13 @@ qt5-wayland
 qt6-wayland
 ripgrep
 rofi
-rust
+rust-analyzer
+rustup
 sbctl
 slurp
 smartmontools
 sof-firmware
+solaar
 steam
 thunderbird
 tree
