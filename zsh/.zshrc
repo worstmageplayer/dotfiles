@@ -1,3 +1,4 @@
+export PATH=~/dotfiles/scripts/:$PATH
 export LC_ALL=en_US.UTF-8
 autoload -U colors && colors
 
