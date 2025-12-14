@@ -42,7 +42,12 @@
         "clock": {
             "format": "{:%H:%M}",
             "tooltip": true,
-            "tooltip-format": "{:%d-%m-%Y}",
+            "tooltip-format": "{calendar}",
+            "calendar": {
+                "format": {
+                    "today": "<span><u>{}</u></span>"
+                }
+            }
         },
 
         "pulseaudio": {
