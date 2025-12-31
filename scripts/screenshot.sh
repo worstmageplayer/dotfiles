@@ -2,7 +2,7 @@
 
 mkdir -p ~/screenshots
 
-title=$(hyprctl activewindow -j | jq -r '.title' | tr ' ' '_')
+title=$(hyprctl activewindow -j | jq -r '.title')
 timestamp=$(date +'%Y-%m-%d_%H-%M-%S')
 output="$HOME/screenshots/${title}-${timestamp}.png"
 
