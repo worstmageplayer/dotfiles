@@ -146,6 +146,9 @@ map("n", "<leader>rw", function()
   vim.cmd("startinsert")
 end, opts("Replace word"))
 
+-- Terminal
+map("n", "<leader>t", '<cmd>terminal<CR>', opts("Terminal"))
+
 -- File Explorer
 map("n", "<leader>q", '<cmd>Oil<CR>', opts(":Ex"))
 
