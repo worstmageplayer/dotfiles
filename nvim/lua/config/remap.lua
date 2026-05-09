@@ -225,3 +225,8 @@ map("v", "<leader>(", "<Esc> `>a)<Esc> `<i(<Esc>", opts("Surround selection in p
 map("v", "<leader>{", "<Esc> `>a}<Esc> `<i{<Esc>", opts("Surround selection in curly braces"))
 map("v", "<leader>[", "<Esc> `>a]<Esc> `<i[<Esc>", opts("Surround selection in square brackets"))
 map("v", "<leader><", "<Esc> `>a><Esc> `<i<<Esc>", opts("Surround selection in angle brackets"))
+
+--fzf-lua
+local fzf = require("fzf-lua")
+map("n", "<leader>fl", fzf.files, opts("fzf find"))
+
