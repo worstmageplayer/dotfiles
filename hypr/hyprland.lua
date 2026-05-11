@@ -287,7 +287,6 @@ hl.device({
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
-hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("zen-browser"))
 hl.bind(mainMod .. " + C", hl.dsp.window.close())
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ action = "toggle" }))
@@ -297,9 +296,10 @@ hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("librewolf"))
 hl.bind(mainMod .. " + O", hl.dsp.exec_cmd("firefox --kiosk --new-window discord.com/channels/@me"))
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("firefox --kiosk --new-window instagram.com/direct/inbox"))
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
-hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.exec_cmd(terminal .. " ; hyprctl dispatch togglefloating"))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("firefox --kiosk --new-window instagram.com/reels"))
+hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("/home/shawn/dotfiles/scripts/screenshot.sh"))
+hl.bind(mainMod .. " + T", hl.dsp.window.move({ workspace = "special:magic" }))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("killall -SIGUSR1 waybar"))
 hl.bind(mainMod .. " + X", hl.dsp.exec_cmd("firefox --kiosk --new-window x.com"))
@@ -310,6 +310,19 @@ hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
 hl.bind(mainMod .. " + up",    hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + down",  hl.dsp.focus({ direction = "down" }))
+hl.bind(mainMod .. " + H",     hl.dsp.focus({ direction = "left" }))
+hl.bind(mainMod .. " + J",     hl.dsp.focus({ direction = "right" }))
+hl.bind(mainMod .. " + K",     hl.dsp.focus({ direction = "up" }))
+hl.bind(mainMod .. " + L",     hl.dsp.focus({ direction = "down" }))
+
+hl.bind(mainMod .. " + SHIFT + left",  hl.dsp.window.swap({ direction = "left" }))
+hl.bind(mainMod .. " + SHIFT + right", hl.dsp.window.swap({ direction = "right" }))
+hl.bind(mainMod .. " + SHIFT + up",    hl.dsp.window.swap({ direction = "up" }))
+hl.bind(mainMod .. " + SHIFT + down",  hl.dsp.window.swap({ direction = "down" }))
+hl.bind(mainMod .. " + SHIFT + H",     hl.dsp.window.swap({ direction = "left" }))
+hl.bind(mainMod .. " + SHIFT + J",     hl.dsp.window.swap({ direction = "up" }))
+hl.bind(mainMod .. " + SHIFT + K",     hl.dsp.window.swap({ direction = "down" }))
+hl.bind(mainMod .. " + SHIFT + L",     hl.dsp.window.swap({ direction = "right" }))
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
@@ -320,8 +333,6 @@ for i = 1, 10 do
 end
 
 -- Example special workspace (scratchpad)
-hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special("magic"))
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
 
 -- Scroll through existing workspaces with mainMod + scroll
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
