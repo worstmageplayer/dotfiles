@@ -152,7 +152,7 @@ hl.curve("bounce1", { type = "bezier", points = { {0.18, 0.89}, {0.32, 0.87} } }
 hl.curve("bounce2", { type = "bezier", points = { {0.47, 1.64}, {0.41, 0.80} } })
 
 -- Default springs
-hl.curve("easy",           { type = "spring", mass = 1, stiffness = 71.2633, dampening = 15.8273644 })
+hl.curve("easy",           { type = "spring", mass = 1, stiffness = 67, dampening = 12 })
 
 hl.animation({ leaf = "global",        enabled = false, speed = 0,   bezier = "easeInOutCubic" })
 hl.animation({ leaf = "border",        enabled = true,  speed = 4.5, bezier = "easeOutExpo" })
