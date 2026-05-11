@@ -203,10 +203,6 @@ windowrule {
 layerrule = match:namespace selection, no_anim true
 
 # See https://wiki.hypr.land/Configuring/Dwindle-Layout/ for more
-dwindle {
-    pseudotile = true # Master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
-    preserve_split = true # You probably want this
-}
 
 # See https://wiki.hypr.land/Configuring/Master-Layout/ for more
 master {
@@ -219,7 +215,6 @@ misc {
     disable_hyprland_logo = true # If true disables the random hyprland logo / anime girl background. :(
     disable_splash_rendering = true
     render_unfocused_fps = 5
-    vfr = true
 }
 
 cursor {
