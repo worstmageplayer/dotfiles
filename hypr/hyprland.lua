@@ -24,6 +24,11 @@ hl.monitor({
     scale    = "2.5",
 })
 
+hl.config({
+  xwayland = {
+    force_zero_scaling = 1;
+  }
+})
 -------------------
 ---- AUTOSTART ----
 -------------------
@@ -139,24 +144,26 @@ hl.gesture({
     action = "workspace"
 })
 
+local sens = -0.6
+
 hl.device({
     name        = "logitech-usb-receiver",
-    sensitivity = -0.7,
+    sensitivity = sens,
     accel_profile = "flat",
 })
 hl.device({
     name        = "logitech-pro-x-2",
-    sensitivity = -0.7,
+    sensitivity = sens,
     accel_profile = "flat",
 })
 hl.device({
     name        = "logitech-pro-x-2-1",
-    sensitivity = -0.7,
+    sensitivity = sens,
     accel_profile = "flat",
 })
 hl.device({
     name        = "logitech-pro-x-2-2",
-    sensitivity = -0.7,
+    sensitivity = sens,
     accel_profile = "flat",
 })
 hl.device({
