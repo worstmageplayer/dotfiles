@@ -5,29 +5,42 @@ local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 local function firefoxApp(name, url)
   local windows = hl.get_windows({})
 
-  local match = nil
   for _, w in ipairs(windows) do
     local title = (w.title)
     local class = (w.class)
 
     if class:lower() == "firefox" then
       if title:lower():find(name, 1, true) then
-        match = w
-        break
+        hl.dispatch(hl.dsp.focus({ workspace = w.workspace }))
+        hl.dispatch(hl.dsp.focus({ window = w }))
+        hl.dispatch(hl.dsp.window.bring_to_top())
+        return
       end
     end
   end
 
-  if match then
-    hl.dispatch(hl.dsp.focus({ workspace = match.workspace }))
-    hl.dispatch(hl.dsp.focus({ window = match }))
-    hl.dispatch(hl.dsp.window.bring_to_top())
-  else
-    hl.dispatch(hl.dsp.exec_cmd(firefox .. url))
-  end
+  hl.dispatch(hl.dsp.exec_cmd(firefox .. url))
 end
 
-hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("zen-browser"))
+local function focusOrSwap(name, cmd)
+  local windows = hl.get_windows({})
+
+  for _, w in ipairs(windows) do
+    local class = (w.initial_class)
+
+    if class:lower() == name then
+      hl.dispatch(hl.dsp.focus({ workspace = w.workspace }))
+      hl.dispatch(hl.dsp.focus({ window = w }))
+      hl.dispatch(hl.dsp.window.bring_to_top())
+      return
+    end
+  end
+
+  hl.dispatch(hl.dsp.exec_cmd(cmd))
+end
+hl.bind(mainMod .. " + B", function ()
+  focusOrSwap("zen", "zen-browser")
+end)
 hl.bind(mainMod .. " + C", hl.dsp.window.close())
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd("nautilus"))
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ action = "toggle" }))
