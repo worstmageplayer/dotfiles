@@ -2,17 +2,47 @@ local terminal    = "kitty"
 local menu        = "rofi -show drun -no-history -matching fuzzy -drun-match-fields name -no-tokenize"
 local firefox     = "firefox --kiosk --new-window"
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
+local function firefoxApp(name, url)
+  local windows = hl.get_windows({})
+
+  local match = nil
+  for _, w in ipairs(windows) do
+    local title = (w.title)
+    local class = (w.class)
+
+    if class:lower() == "firefox" then
+      if title:lower():find(name, 1, true) then
+        match = w
+        break
+      end
+    end
+  end
+
+  if match then
+    hl.dispatch(hl.dsp.focus({ workspace = match.workspace }))
+    hl.dispatch(hl.dsp.focus({ window = match }))
+    hl.dispatch(hl.dsp.window.bring_to_top())
+  else
+    hl.dispatch(hl.dsp.exec_cmd(firefox .. url))
+  end
+end
 
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("zen-browser"))
 hl.bind(mainMod .. " + C", hl.dsp.window.close())
+hl.bind(mainMod .. " + E", hl.dsp.exec_cmd("nautilus"))
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ action = "toggle" }))
-hl.bind(mainMod .. " + I", hl.dsp.exec_cmd(firefox .. " web.whatsapp.com"))
+hl.bind(mainMod .. " + I", function ()
+  firefoxApp("whatsapp", " web.whatsapp.com")
+end)
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"))
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("librewolf"))
-hl.bind(mainMod .. " + O", hl.dsp.exec_cmd(firefox .. " discord.com/channels/@me"))
-hl.bind(mainMod .. " + P", hl.dsp.exec_cmd(firefox .. " instagram.com/direct/inbox"))
+hl.bind(mainMod .. " + O", function ()
+  firefoxApp("discord", " discord.com/channels/@me")
+end)
+hl.bind(mainMod .. " + P", function ()
+  firefoxApp("instagram", " instagram.com/direct/inbox")
+end)
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
-hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(firefox .. " instagram.com/reels"))
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("/home/shawn/dotfiles/scripts/screenshot.sh"))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("killall -SIGUSR1 waybar"))
