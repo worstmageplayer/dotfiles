@@ -222,6 +222,14 @@ hl.workspace_rule({
     on_created_empty = "zen-browser",
 })
 hl.window_rule({
+  match = { class = "librewolf" },
+  workspace = "3 silent"
+})
+hl.window_rule({
+  match = { class = "firefox" },
+  workspace = "4 silent"
+})
+hl.window_rule({
   border_size = 0,
   match = {
     float = 0,
@@ -236,6 +244,10 @@ hl.window_rule({
 })
 hl.window_rule({
   match = { class = "mpv" },
+  float = true,
+})
+hl.window_rule({
+  match = { class = "org.gnome.Nautilus" },
   float = true,
 })
 hl.window_rule({
