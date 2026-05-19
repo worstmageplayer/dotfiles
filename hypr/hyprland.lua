@@ -34,7 +34,7 @@ hl.config({
 -------------------
 
 hl.on("hyprland.start", function ()
-  hl.exec_cmd("hyprpaper & waybar & hypridle")
+  hl.exec_cmd("hyprpaper & quickshell & hypridle")
   hl.exec_cmd("systemctl --user start hyprpolkitagent")
 end)
 
