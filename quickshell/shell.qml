@@ -30,7 +30,7 @@ PanelWindow {
         spacing: 16
 
         RowLayout {
-            spacing: 4
+            spacing: 6
             // Workspaces
             Repeater {
                 property int largestWorkspaceIndex: Math.max(0, ...Hyprland.workspaces.values.map(w => w.id))
@@ -38,11 +38,18 @@ PanelWindow {
                 property int workspaceCount: Math.max(5, largestWorkspaceIndex, activeWorkspaceIndex)
                 model: workspaceCount
                 Text {
+                    Layout.fillHeight: true
+                    property int wsId: index + 1
                     property var ws: Hyprland.workspaces.values.find(w => w.id === index + 1)
                     property bool isActive: Hyprland.focusedWorkspace?.id === (index + 1)
                     text: isActive ? "\uf444" : "\uf4c3"
                     color: root.colFg
                     font { family: root.fontFamily; pixelSize: root.fontSize }
+
+                    MouseArea {
+                        anchors { fill: parent }
+                        onClicked: Hyprland.dispatch(`hl.dsp.focus({workspace = '${wsId}'})`)
+                    }
                 }
             }
         }
@@ -52,7 +59,10 @@ PanelWindow {
         // Clock
         Text {
             id: clock
-            anchors.centerIn: parent
+            Layout.fillHeight: true
+            anchors {
+                centerIn: parent
+            }
             color: root.colFg
             font {
                 family: root.fontFamily
