@@ -3,12 +3,13 @@ import Quickshell
 import Quickshell.Wayland
 import Quickshell.Io
 import Quickshell.Hyprland
-import Quickshell.Services.Pipewire
-import Quickshell.Services.UPower
 import QtQuick
 import QtQuick.Layouts
 
 import "./Battery.qml"
+import "./Brightness.qml"
+import "./Clock.qml"
+import "./Volume.qml"
 import "./Theme.qml"
 
 PanelWindow {
@@ -51,44 +52,34 @@ PanelWindow {
 
         // Clock
         Text {
-            id: clock
-            Layout.fillHeight: true
-            anchors {
-                centerIn: parent
+            id: clockBar
+            property int formatIndex: 0
+
+            text: {
+                if (formatIndex === 0) return Clock.time
+                if (formatIndex === 1) return Clock.date
+                return Clock.day
             }
+            Layout.fillHeight: true
+            anchors { centerIn: parent }
             color: Theme.colFg
             font {
                 family: Theme.fontFamily
                 pixelSize: Theme.fontSizeClock
                 bold: true
             }
-
-            Process {
-                id: dateProc
-                command: ["date", "+%H:%M"]
-                running: true
-                stdout: StdioCollector {
-                    onStreamFinished: {
-                        const value =this.text.trim()
-                        clock.text = value
-                    }
+            MouseArea {
+                anchors { fill: parent }
+                onClicked: {
+                    clockBar.formatIndex = (clockBar.formatIndex + 1) % 3
                 }
-            }
-
-            Timer {
-                interval: 1000
-                running: true
-                repeat: true
-                onTriggered: dateProc.running = true
             }
         }
 
         // Brightness
         Text {
-            id: brightnessText
-            property int brightnessValue: 10
-            property int maxBrightnessValue: 10
-            text: " " + Math.round(brightnessValue*100/maxBrightnessValue) + "%"
+            id: brightnessBar
+            text: Brightness.brightnessText
             color: Theme.colFg
             font {
                 family: Theme.fontFamily
@@ -100,61 +91,18 @@ PanelWindow {
                 anchors { fill: parent }
                 onWheel: (event) => {
                     if (event.angleDelta.y > 0) {
-                        brightnessUpProcess.running = true
+                        Brightness.brightnessUp()
                     } else {
-                        brightnessDownProcess.running = true
+                        Brightness.brightnessDown()
                     }
                 }
             }
         }
 
-        Process {
-            id: brightnessUpProcess
-            command: ["brightnessctl", "set", "1%+"]
-            onExited: getBrightnessProcess.running = true
-        }
-
-        Process {
-            id: brightnessDownProcess
-            command: ["brightnessctl", "set", "1%-"]
-            onExited: getBrightnessProcess.running = true
-        }
-
-        Process {
-            id: getMaxBrightnessProcess
-            running: true
-            command: ["brightnessctl", "max"]
-            stdout: StdioCollector {
-                onStreamFinished: {
-                    const value = parseInt(this.text.trim())
-                    getBrightnessProcess.running = true
-                    brightnessText.maxBrightnessValue = value
-                }
-            }
-        }
-
-        Process {
-            id: getBrightnessProcess
-            command: ["brightnessctl", "get"]
-            stdout: StdioCollector {
-                onStreamFinished: {
-                    const value = parseInt(this.text.trim())
-                    brightnessText.brightnessValue = value
-                }
-            }
-        }
-
         // Volume
-        PwObjectTracker { objects: [ Pipewire.defaultAudioSink ] }
-
         Text {
-            id: volumeText
-            property int volumeValue: Math.round(Pipewire.defaultAudioSink.audio.volume * 100)
-            property string volumeIcon: {
-                if (volumeValue < 50) return "\uf027"
-                else return "\uf028"
-            }
-            text: volumeIcon + " " + volumeValue + "%"
+            id: volumeBar
+            text: Volume.volumeText
             color: Theme.colFg
             font {
                 family: Theme.fontFamily
@@ -166,28 +114,20 @@ PanelWindow {
                 anchors.fill: parent
                 onWheel: (event) => {
                     if (event.angleDelta.y > 0) {
-                        volumeUpProcess.running = true
+                        Volume.volumeUp()
                     } else {
-                        volumeDownProcess.running = true
+                        Volume.volumeDown()
                     }
                 }
+                onClicked: Volume.volumeMute()
             }
-        }
-
-        Process {
-            id: volumeUpProcess
-            command: ["wpctl", "set-volume", "@DEFAULT_AUDIO_SINK@", "1%+"]
-        }
-
-        Process {
-            id: volumeDownProcess
-            command: ["wpctl", "set-volume", "@DEFAULT_AUDIO_SINK@", "1%-"]
         }
 
         // Battery
         Text {
             id: batteryBar
-            text: Battery.batteryText
+            property bool hovered: false
+            text: hovered ? Battery.mouseBatteryText : Battery.batteryText
             color: Theme.colFg
             font {
                 family: Theme.fontFamily
@@ -199,43 +139,10 @@ PanelWindow {
                 anchors { fill: parent }
                 hoverEnabled: true
                 onEntered: {
-                    hoverBattery.visible = true
+                    batteryBar.hovered = true
                 }
-                onExited: hoverBattery.visible = false
-            }
-        }
-
-    }
-
-    PopupWindow {
-        id: hoverBattery
-        visible: false
-        anchor {
-            window: root
-            rect {
-                x: parentWindow.width
-                y: parentWindow.height + 4
-            }
-        }
-        width: hoverText.implicitWidth + 16
-        height: hoverText.implicitHeight + 8
-        color: "transparent"
-
-        Rectangle {
-            anchors.fill: parent
-            radius: 3
-            color: Theme.colBg
-
-            Text {
-                id: hoverText
-                anchors.centerIn: parent
-                text: Battery.mouseBatteryText
-                color: Theme.colFg
-
-                font {
-                    family: Theme.fontFamily
-                    pixelSize: Theme.fontSize
-                    bold: true
+                onExited: {
+                    batteryBar.hovered = false
                 }
             }
         }
