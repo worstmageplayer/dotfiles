@@ -26,9 +26,13 @@ return {
       pyright = {},
       ts_ls = {},
       clangd = {},
+      qmlls = {
+        setup = {},
+        cmd = { "qmlls6" },
+        filetypes = { "qml", "qmljs" },
+      },
 
       rust_analyzer = {
-        capabilities = require('blink.cmp').get_lsp_capabilities(),
         settings = {
           ['rust-analyzer'] = {
             check = { command = 'clippy' },
