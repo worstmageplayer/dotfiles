@@ -1,16 +1,10 @@
 // https://quickshell.org/docs/v0.3.0/types/
 import Quickshell
-import Quickshell.Wayland
-import Quickshell.Io
 import Quickshell.Hyprland
 import QtQuick
 import QtQuick.Layouts
 
-import "./Battery.qml"
-import "./Brightness.qml"
-import "./Clock.qml"
-import "./Volume.qml"
-import "./Theme.qml"
+import "./"
 
 PanelWindow {
     id: root
@@ -70,8 +64,12 @@ PanelWindow {
             }
             MouseArea {
                 anchors { fill: parent }
-                onClicked: {
-                    clockBar.formatIndex = (clockBar.formatIndex + 1) % 3
+                acceptedButtons: Qt.LeftButton | Qt.RightButton
+                onClicked: (mouse) => {
+                    if (mouse.button == Qt.LeftButton)
+                        clockBar.formatIndex = (clockBar.formatIndex + 1) % 3;
+                    else
+                        clockBar.formatIndex = (clockBar.formatIndex + 2) % 3;
                 }
             }
         }
