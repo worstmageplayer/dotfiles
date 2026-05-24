@@ -24,6 +24,10 @@ Singleton {
         d => d.type === UPowerDeviceType.Mouse
     )
     property int mouseBatteryPercent: mouseBattery ? Math.round(mouseBattery.percentage * 100) : 0
-
-    property string mouseBatteryText: "󰍽 " + mouseBatteryPercent + "%"
+    property string mouseBatteryText: {
+        if (mouseBattery.length < 1)
+            return "󰍾"
+        else
+            return "󰍽 " + mouseBatteryPercent + "%"
+    }
 }
