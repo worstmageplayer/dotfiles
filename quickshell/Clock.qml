@@ -29,7 +29,7 @@ Singleton {
 
     Process {
         id: dateProc
-        command: ["date", "+%D"]
+        command: ["date", "+%d/%m/%y"]
         running: true
         stdout: StdioCollector {
             onStreamFinished: {
