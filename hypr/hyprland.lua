@@ -260,5 +260,6 @@ hl.window_rule({
 })
 hl.layer_rule({
   match = { namespace = "selection" },
+  blur = false,
   no_anim = true,
 })
