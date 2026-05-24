@@ -26,7 +26,9 @@ PanelWindow {
                 property int workspaceCount: Math.max(5, largestWorkspaceIndex, activeWorkspaceIndex)
                 model: workspaceCount
                 Text {
+                    id: wsBar
                     Layout.fillHeight: true
+                    required property int index
                     property int wsId: index + 1
                     property var ws: Hyprland.workspaces.values.find(w => w.id === index + 1)
                     property bool isActive: Hyprland.focusedWorkspace?.id === (index + 1)
@@ -36,7 +38,7 @@ PanelWindow {
 
                     MouseArea {
                         anchors { fill: parent }
-                        onClicked: Hyprland.dispatch(`hl.dsp.focus({workspace = '${wsId}'})`)
+                        onClicked: Hyprland.dispatch(`hl.dsp.focus({workspace = '${wsBar.wsId}'})`)
                     }
                 }
             }
