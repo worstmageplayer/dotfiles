@@ -21,7 +21,7 @@ Singleton {
     }
     property string batteryText: batteryIcon + " " + batteryValue + "%"
     property var mouseBattery: UPower.devices.values.find(
-        d => d.model === "Logitech PRO X 2"
+        d => d.type === UPowerDeviceType.Mouse
     )
     property int mouseBatteryPercent: mouseBattery ? Math.round(mouseBattery.percentage * 100) : 0
 
