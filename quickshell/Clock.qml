@@ -22,7 +22,8 @@ Singleton {
         running: true
         stdout: StdioCollector {
             onStreamFinished: {
-                root.day = this.text
+                const value = this.text.trim()
+                root.day = value
             }
         }
     }
@@ -33,7 +34,8 @@ Singleton {
         running: true
         stdout: StdioCollector {
             onStreamFinished: {
-                root.date = this.text
+                const value = this.text.trim()
+                root.date = value
             }
         }
     }
