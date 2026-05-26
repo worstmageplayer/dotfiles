@@ -1,6 +1,7 @@
 // https://quickshell.org/docs/v0.3.0/types/
 import Quickshell
 import Quickshell.Hyprland
+import Quickshell.Io
 import QtQuick
 import QtQuick.Layouts
 
@@ -67,6 +68,7 @@ PanelWindow {
                 anchors { fill: parent }
                 acceptedButtons: Qt.LeftButton | Qt.RightButton
                 onClicked: (mouse) => {
+                    Clock.clockUpdate()
                     if (mouse.button == Qt.LeftButton)
                     clockBar.formatIndex = (clockBar.formatIndex + 1) % 3;
                     else
@@ -158,7 +160,6 @@ PanelWindow {
                 font {
                     family: Theme.fontFamily
                     pixelSize: Theme.fontSize - 2
-                    bold: true
                 }
                 MouseArea {
                     anchors { fill: parent }
