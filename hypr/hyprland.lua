@@ -18,10 +18,10 @@ require("hyprland.environmentVariables")
 
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
 hl.monitor({
-    output   = "eDP-1",
+    output   = "eDP-2",
     mode     = "3200x2000@165",
     position = "0x0",
-    scale    = "2.5",
+    scale    = "2",
 })
 
 hl.config({
