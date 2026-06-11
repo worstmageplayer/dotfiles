@@ -88,10 +88,11 @@ hl.bind(mainMod .. " + SHIFT + K",     hl.dsp.window.swap({ direction = "down" }
 hl.bind(mainMod .. " + SHIFT + L",     hl.dsp.window.swap({ direction = "right" }))
 
 local function workspaceFocus(i)
-  hl.dispatch(hl.dsp.focus({ workspace = i}))
-  local workspace = hl.get_active_workspace()
-  if workspace and workspace.id == i then
+  local currentWorkspace = hl.get_active_workspace().id
+  if currentWorkspace == i then
     hl.dispatch(hl.dsp.window.cycle_next())
+  else
+    hl.dispatch(hl.dsp.focus({ workspace = i}))
   end
 end
 -- Switch workspaces with mainMod + [0-9]
