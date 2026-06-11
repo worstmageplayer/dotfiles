@@ -91,6 +91,7 @@ local function workspaceFocus(i)
   local currentWorkspace = hl.get_active_workspace().id
   if currentWorkspace == i then
     hl.dispatch(hl.dsp.window.cycle_next())
+    hl.dispatch(hl.dsp.window.bring_to_top())
   else
     hl.dispatch(hl.dsp.focus({ workspace = i}))
   end
