@@ -8,6 +8,14 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
+  pattern = "text",
+  callback = function()
+    vim.opt.wrap = true
+    vim.opt.linebreak = true
+  end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
   pattern = "lua",
   callback = function()
     vim.opt.tabstop = 2
