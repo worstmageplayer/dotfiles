@@ -23,6 +23,12 @@ hl.monitor({
     position = "0x0",
     scale    = "2",
 })
+hl.monitor({
+    output   = "eDP-1",
+    mode     = "3200x2000@165",
+    position = "0x0",
+    scale    = "2",
+})
 
 hl.config({
   xwayland = {
