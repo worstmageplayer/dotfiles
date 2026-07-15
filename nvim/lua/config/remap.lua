@@ -196,9 +196,7 @@ map('n', '<leader>v', [[v]], opts("Visual mode"))
 map('n', '<leader>va', [[ggVG]], opts("Visual select all"))
 map('n', '<leader>vw', [[viw]], opts("Visual select word"))
 map('n', '<leader>vf', function ()
-  local ts_utils = require("nvim-treesitter.ts_utils")
-
-  local node = ts_utils.get_node_at_cursor()
+  local node = vim.treesitter.get_node()
   if not node then return end
 
   while node do
