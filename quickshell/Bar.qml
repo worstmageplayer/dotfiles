@@ -133,7 +133,7 @@ PanelWindow {
             Text {
                 id: batteryBar
                 property bool hovered: false
-                text: hovered ? Battery.mouseBatteryText : Battery.batteryText
+                text: (Battery.mouseBatteryText && hovered) ? Battery.mouseBatteryText : Battery.batteryText
                 color: Theme.colFg
                 font {
                     family: Theme.fontFamily
