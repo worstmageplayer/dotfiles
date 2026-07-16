@@ -227,4 +227,3 @@ map("v", "<leader><", "<Esc> `>a><Esc> `<i<<Esc>", opts("Surround selection in a
 --fzf-lua
 local fzf = require("fzf-lua")
 map("n", "<leader>fl", fzf.files, opts("fzf find"))
-
