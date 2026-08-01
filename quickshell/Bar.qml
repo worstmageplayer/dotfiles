@@ -26,7 +26,7 @@ PanelWindow {
             Repeater {
                 property int largestWorkspaceIndex: Math.max(0, ...Hyprland.workspaces.values.map(w => w.id))
                 property int activeWorkspaceIndex: Hyprland.focusedWorkspace ? Hyprland.focusedWorkspace.id : 0
-                property int workspaceCount: Math.max(5, largestWorkspaceIndex, activeWorkspaceIndex)
+                property int workspaceCount: Math.max(largestWorkspaceIndex, activeWorkspaceIndex)
                 model: workspaceCount
                 Text {
                     id: wsBar
