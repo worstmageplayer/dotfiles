@@ -224,14 +224,18 @@ hl.workspace_rule({
     workspace = "2",
     on_created_empty = "zen-browser",
 })
+
 hl.window_rule({
   match = { class = "librewolf" },
   workspace = "3 silent"
 })
+
 hl.window_rule({
   match = { class = "firefox" },
-  workspace = "4 silent"
+  workspace = "4 silent",
+  fullscreen_state = "0 2",
 })
+
 hl.window_rule({
   border_size = 0,
   match = {
@@ -239,21 +243,8 @@ hl.window_rule({
     workspace = "w[tv1]"
   },
 })
-hl.window_rule({
-  name = "feh",
-  match = { class = "feh" },
-  float = true,
-  center = true,
-})
-hl.window_rule({
-  match = { class = "mpv" },
-  float = true,
-})
-hl.window_rule({
-  match = { class = "org.gnome.Nautilus" },
-  float = true,
-})
-hl.window_rule({
-  match = { class = "firefox" },
-  fullscreen_state = "0 2",
-})
+
+local FLOAT_CLASSES = { "feh", "mpv", "org.gnome.Nautilus" }
+for _, class in ipairs(FLOAT_CLASSES) do
+    hl.window_rule({ name = "float-" .. class, match = { class = class }, float = true })
+end
