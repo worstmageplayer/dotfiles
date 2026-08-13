@@ -220,14 +220,6 @@ hl.window_rule({
     float = true,
 })
 
-hl.layer_rule({
-    name  = "rofi",
-    match = { class = "rofi" },
-
-    blur  = false,
-    ignore_alpha = 0,
-})
-
 hl.workspace_rule({
     workspace = "2",
     on_created_empty = "zen-browser",
@@ -264,13 +256,4 @@ hl.window_rule({
 hl.window_rule({
   match = { class = "firefox" },
   fullscreen_state = "0 2",
-})
-hl.window_rule({
-  match = { class = "negative:kitty" },
-  no_blur = true,
-})
-hl.layer_rule({
-  match = { namespace = "selection" },
-  blur = false,
-  no_anim = true,
 })
