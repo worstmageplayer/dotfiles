@@ -248,3 +248,8 @@ local FLOAT_CLASSES = { "feh", "mpv", "org.gnome.Nautilus" }
 for _, class in ipairs(FLOAT_CLASSES) do
     hl.window_rule({ name = "float-" .. class, match = { class = class }, float = true })
 end
+
+hl.layer_rule({
+  match = { namespace = "selection" },
+  no_anim = true
+})
