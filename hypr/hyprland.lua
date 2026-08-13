@@ -11,28 +11,31 @@
 require("hyprland.animations")
 require("hyprland.binds")
 require("hyprland.environmentVariables")
+require("hyprland.hyprglass")
 
 ------------------
 ---- MONITORS ----
 ------------------
 
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
+
+local scale = "1.67"
 hl.monitor({
     output   = "eDP-2",
     mode     = "3200x2000@165",
     position = "0x0",
-    scale    = "2",
+    scale    = scale,
 })
 hl.monitor({
     output   = "eDP-1",
     mode     = "3200x2000@165",
     position = "0x0",
-    scale    = "2",
+    scale    = scale,
 })
 
 hl.config({
   xwayland = {
-    force_zero_scaling = 1;
+    force_zero_scaling = true;
   }
 })
 -------------------
@@ -83,7 +86,7 @@ hl.config({
         },
 
         blur = {
-            enabled   = true,
+            enabled   = false,
             size      = 2,
             passes    = 4,
             contrast  = 1,
@@ -219,7 +222,7 @@ hl.layer_rule({
     name  = "rofi",
     match = { class = "rofi" },
 
-    blur  = true,
+    blur  = false,
     ignore_alpha = 0,
 })
 

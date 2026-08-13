@@ -2,7 +2,7 @@
     highlight: bold;
 
     transparent:            #00000000;
-    slhj-dark-bg0-hard:     #16161daa;
+    slhj-dark-bg0-hard:     #16161d11;
     slhj-dark-fg0:          #fffefe;
     slhj-dark-fg1:          #89b4fa;
     slhj-dark-red-dark:     #92140c;
