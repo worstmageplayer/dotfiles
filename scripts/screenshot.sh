@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-mkdir -p ~/screenshots
+mkdir -p /tmp/screenshots
 
 title=$(hyprctl activewindow -j | jq -r '.title')
 timestamp=$(date +'%Y-%m-%d_%H-%M-%S')
-output="$HOME/screenshots/${timestamp}-${title}.png"
+output="/tmp/screenshots/${timestamp}-${title}.png"
 
 grim -g "$(slurp -b 00000080 -c ffffffff -w 1)" "$output"
 wl-copy < "$output"
