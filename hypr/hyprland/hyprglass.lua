@@ -4,6 +4,14 @@ end
 
 local hg = hl.plugin.hyprglass
 
+local WHITELIST_LAYERS = {
+    { namespace = "rofi", preset = "clearblur", mask_threshold = 0.05 },
+}
+
+local WHITELIST_WINDOWS = {
+    { class = "kitty", preset = "clearterminal" },
+}
+
 hg.config({
     default_theme  = "dark",
     default_preset = "clear",
@@ -13,10 +21,19 @@ hg.config({
     brightness = 0.9,
     dark = { brightness = 1.0 },
 
+    enabled = false,
+
     layers = { enabled = 1 },
 })
 
-hg.layer("rofi", { preset = "clearblur", mask_threshold = 0.05 })
+for _, layer in ipairs(WHITELIST_LAYERS) do
+    hg.layer(layer.namespace, { preset = layer.preset, mask_threshold = layer.mask_threshold })
+end
+
+for _, win in ipairs(WHITELIST_WINDOWS) do
+    hl.window_rule({ match = { class = win.class }, tag = "+hyprglass_enabled" })
+    hl.window_rule({ match = { class = win.class }, tag = "+hyprglass_preset_" .. win.preset })
+end
 
 hg.preset("clear", {
     glass_opacity        = 1.0,
@@ -56,6 +73,3 @@ hg.preset("clearterminal", {
     adaptive_boost       = 0.0,
     dark = { tint_color = 0x16161d67}
 })
-
-hl.window_rule({ match = { class = "mpv" },            tag = "+hyprglass_disabled" })
-hl.window_rule({ match = { class = "kitty" },          tag = "+hyprglass_preset_clearterminal" })

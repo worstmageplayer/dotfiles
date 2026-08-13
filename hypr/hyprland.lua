@@ -43,6 +43,8 @@ hl.config({
 -------------------
 
 hl.on("hyprland.start", function ()
+  hl.exec_cmd("hyprpm reload -n")
+  hl.exec_cmd("hyprctl reload")
   hl.exec_cmd("hyprpaper & quickshell & hypridle")
   hl.exec_cmd("systemctl --user start hyprpolkitagent")
 end)
