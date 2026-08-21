@@ -56,8 +56,8 @@ end)
 -- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
 hl.config({
     general = {
-        gaps_in  = 2,
-        gaps_out = 4,
+        gaps_in  = 0,
+        gaps_out = 0,
 
         border_size = 2,
 
@@ -76,8 +76,8 @@ hl.config({
     },
 
     decoration = {
-        rounding       = 5,
-        rounding_power = 3,
+        rounding       = 0,
+        rounding_power = 0,
 
         -- Change transparency of focused and unfocused windows
         active_opacity   = 1.0,
@@ -179,7 +179,7 @@ hl.device({
 })
 hl.device({
     name        = "elan06fa:00-04f3:3280-touchpad",
-    sensitivity = 0.3,
+    sensitivity = 0.4,
     accel_profile = "flat",
 })
 
@@ -234,6 +234,11 @@ hl.window_rule({
   match = { class = "firefox" },
   workspace = "4 silent",
   fullscreen_state = "0 2",
+})
+
+hl.window_rule({
+    match  = { class = "kitty" },
+    opacity = "1.0 0.8",
 })
 
 hl.window_rule({
