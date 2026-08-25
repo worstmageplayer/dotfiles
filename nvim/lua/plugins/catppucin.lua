@@ -5,16 +5,9 @@ return {
     config = function()
         require("catppuccin").setup({
             flavour = "mocha",
-            color_overrides = {
-                mocha = {
-                    base = "#16161d",
-                    text = "#f8f8ff",
-                },
-                latte = {
-                    base = "#fffff0",
-                    text = "#16161d",
-                },
-            },
+            -- Stock Catppuccin palette: colours come from
+            -- https://github.com/catppuccin/palette (mirrored in palette/*.json).
+            -- To switch flavour: change `flavour` above.
             highlight_overrides = {
                 mocha = function(colors)
                     return {
@@ -27,10 +20,10 @@ return {
                         StatusLineNC = { bg = "none" },
                         MsgArea = { bg = "none" },
                         CursorLine = { bg = "none" },
-                        CursorLineNr = { fg = "#ebefff" },
-                        LineNr = { fg = "#cdd6f4" },
-                        VertSplit = { fg = "#fffff0" },
-                        Whitespace = { fg = "#323242" },
+                        CursorLineNr = { fg = colors.text },
+                        LineNr = { fg = colors.overlay0 },
+                        VertSplit = { fg = colors.surface0 },
+                        Whitespace = { fg = colors.surface0 },
                         Visual = {
                             style = {},
                         }
@@ -38,11 +31,11 @@ return {
                 end,
                 latte = function(colors)
                     return {
-                        LineNr = { fg = "#7287fd" },
-                        CursorLineNr = { fg = "#7287fd" },
-                        CursorLine = { bg = "#e8e8da" },
-                        VertSplit = { fg = "#7827fd" },
-                        MsgArea = { bg = "#fffff0" },
+                        LineNr = { fg = colors.overlay0 },
+                        CursorLineNr = { fg = colors.text },
+                        CursorLine = { bg = colors.mantle },
+                        VertSplit = { fg = colors.surface0 },
+                        MsgArea = { bg = colors.base },
                     }
                 end,
             },

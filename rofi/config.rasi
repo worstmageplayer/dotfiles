@@ -173,4 +173,4 @@ display-drun: "";
   }
 }
 
-@import "slhj"
+@import "theme"

@@ -10,21 +10,21 @@ end
 
 local custom_theme = {
     normal = {
-        a = { fg = '#16161d', bg = '#89b4fa', gui = 'bold' },
+        a = { fg = '#11111b', bg = '#b4befe', gui = 'bold' },
         b = { fg = '#cdd6f4', bg = '#313244' },
         c = { fg = '#cdd6f4', bg = 'none' },
     },
     insert = {
-        a = { fg = '#16161d', bg = '#a6e3a1', gui = 'bold' },
+        a = { fg = '#11111b', bg = '#a6e3a1', gui = 'bold' },
     },
     visual = {
-        a = { fg = '#16161d', bg = '#f9e2af', gui = 'bold' },
+        a = { fg = '#11111b', bg = '#f9e2af', gui = 'bold' },
     },
     replace = {
-        a = { fg = '#16161d', bg = '#f38ba8', gui = 'bold' },
+        a = { fg = '#11111b', bg = '#f38ba8', gui = 'bold' },
     },
     command = {
-        a = { fg = '#16161d', bg = '#94e2d5', gui = 'bold' },
+        a = { fg = '#11111b', bg = '#94e2d5', gui = 'bold' },
     },
     inactive = {
         a = { fg = '#a6adc8', bg = 'none', gui = 'bold' },

@@ -1,0 +1,15 @@
+// !!! GENERATED FILE — DO NOT EDIT !!!
+// Regenerate with: scripts/theme.py
+* {
+    background:             #18182511;
+    foreground:             #cdd6f4;
+    accent:                 #b4befe;
+
+    yellow:                 #f9e2af;
+    yellow-light:           #f5e0dc;
+    red-dark:               #eba0ac;
+    red-light:              #f38ba8;
+
+    entry-placeholder:      #6c7086;
+    selected-bg:            #b4befe45;
+}
