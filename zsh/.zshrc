@@ -27,3 +27,7 @@ command_not_found_handler() {
   command="$1"
   echo "Command '$command' not found!" | cowsay -f actually
 }
+export PATH="$HOME/.local/bin:$PATH"
+
+# opencode
+export PATH=/home/shawn/.opencode/bin:$PATH

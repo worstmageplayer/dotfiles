@@ -2,6 +2,7 @@ pragma Singleton
 
 import Quickshell
 import Quickshell.Io
+import QtQuick
 
 Singleton {
     id: root
@@ -16,6 +17,14 @@ Singleton {
 
     function brightnessDown() {
         brightnessDownProcess.running = true
+    }
+
+    Timer {
+        interval: 1000
+        running: true
+        repeat: true
+        triggeredOnStart: false
+        onTriggered: getBrightnessProcess.running = true
     }
 
     Process {
