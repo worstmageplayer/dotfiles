@@ -10,7 +10,8 @@ local function firefoxApp(name, url)
     local class = (w.class)
 
     if class:lower() == "firefox" then
-      if title:lower():find(name, 1, true) then
+      title = title:match("^(.-)%s*— Mozilla Firefox") or title
+      if title:lower():find("%f[%w]" .. name .. "%f[%W]") then
         hl.dispatch(hl.dsp.focus({ workspace = w.workspace }))
         hl.dispatch(hl.dsp.focus({ window = w }))
         hl.dispatch(hl.dsp.window.bring_to_top())
